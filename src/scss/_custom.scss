@@ -1,0 +1,23 @@
+// Here you can add other styles
+.spinner-loading{
+    position: absolute;
+    left: 50%;
+    top: 0;
+}
+.container-lg{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+}
+.button-form{
+    display: flex;
+    justify-content: space-between;
+    .Next_btn{
+        margin-left: auto;
+    }
+}
+
+.new_employer_form{
+    min-height: 250px;
+}
