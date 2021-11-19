@@ -45,6 +45,23 @@ const _nav = [
     to: '/liste_employee',
     icon: <CIcon icon={cilList} customClassName="nav-icon" />,
   },
+  {
+    component: CNavTitle,
+    name: 'Events',
+  },
+  {
+    component: CNavItem,
+    name: 'Add events',
+    to: '/ajout_event',
+    icon: <CIcon icon={cilList} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Calendar',
+    to: '/calendar',
+    icon: <CIcon icon={cilList} customClassName="nav-icon" />,
+  },
+ 
   // {
   //   component: CNavItem,
   //   name: 'Colors',

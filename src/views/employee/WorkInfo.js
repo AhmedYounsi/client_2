@@ -10,10 +10,12 @@ import {
   CInputGroup,
   CInputGroupText,
 } from '@coreui/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { GetUsers } from '../../actions/UserActions'
 
 function WorkInfo(props) {
   const [validated, setValidated] = useState(false)
+  const [ReportedToArr, setReportedToArr] = useState([])
   const handleSubmit = (event) => {
     event.preventDefault()
     const form = event.currentTarget
@@ -22,6 +24,24 @@ function WorkInfo(props) {
     }
     setValidated(true)
   }
+
+  // Get All User => reportedToList
+  const GetAll = async () => {
+    const res = await GetUsers()
+    let arr = []
+    var label,value
+    if (res) {
+      res.map((el) => {
+        label = value = el.name + ' ' + el.lastName
+        return arr.push({ label, value, id: el._id })
+      })
+    }
+    setReportedToArr(arr)
+  }
+
+  useEffect(() => {
+    GetAll()
+  }, [])
 
   const officeItems = [
     { label: '', value: '' },
@@ -34,8 +54,9 @@ function WorkInfo(props) {
   ]
 
   const departmentItems = [
-    { label: '', value: '' },  
-    { label: 'RH', value: 'RH' }]
+    { label: '', value: '' },
+    { label: 'RH', value: 'RH' },
+  ]
 
   const contractItems = [
     { label: '', value: '' },
@@ -45,8 +66,9 @@ function WorkInfo(props) {
   ]
 
   const postItems = [
-    { label: '', value: '' },  
-    { label: 'Ingenieur', value: 'Ingenieur' }]
+    { label: '', value: '' },
+    { label: 'Ingenieur', value: 'Ingenieur' },
+  ]
 
   return (
     <CForm
@@ -61,8 +83,11 @@ function WorkInfo(props) {
           onChange={(e) => props.HandleOffice(e.target.value)}
           aria-label="Default select example"
         >
-          {officeItems.map((el,index) => (
-            <option  key={index} value={el.value}> {el.label} </option>
+          {officeItems.map((el, index) => (
+            <option key={index} value={el.value}>
+              {' '}
+              {el.label}{' '}
+            </option>
           ))}
         </CFormSelect>
       </CCol>
@@ -74,8 +99,11 @@ function WorkInfo(props) {
           onChange={(e) => props.HandleDep(e.target.value)}
           aria-label="Default select example"
         >
-          {departmentItems.map((el,index) => (
-            <option  key={index} value={el.value}> {el.label} </option>
+          {departmentItems.map((el, index) => (
+            <option key={index} value={el.value}>
+              {' '}
+              {el.label}{' '}
+            </option>
           ))}
         </CFormSelect>
       </CCol>
@@ -86,8 +114,11 @@ function WorkInfo(props) {
           onChange={(e) => props.HandlePost(e.target.value)}
           aria-label="Default select example"
         >
-          {contractItems.map((el,index) => (
-            <option  key={index} value={el.value}> {el.label} </option>
+          {contractItems.map((el, index) => (
+            <option key={index} value={el.value}>
+              {' '}
+              {el.label}{' '}
+            </option>
           ))}
         </CFormSelect>
       </CCol>
@@ -98,8 +129,11 @@ function WorkInfo(props) {
           onChange={(e) => props.HandleContract(e.target.value)}
           aria-label="Default select example"
         >
-          {postItems.map((el,index) => (
-            <option  key={index} value={el.value}> {el.label} </option>
+          {postItems.map((el, index) => (
+            <option key={index} value={el.value}>
+              {' '}
+              {el.label}{' '}
+            </option>
           ))}
         </CFormSelect>
       </CCol>
@@ -110,13 +144,15 @@ function WorkInfo(props) {
           onChange={(e) => props.HandleReported(e.target.value)}
           aria-label="Default select example"
         >
-          {postItems.map((el,index) => (
-            <option key={index} value={el.value}> {el.label} </option>
+          <option></option>
+          {ReportedToArr.map((el, index) => (
+            <option key={index} value={el.value}>
+              {' '}
+              {el.label}{' '}
+            </option>
           ))}
         </CFormSelect>
       </CCol>
-
-    
     </CForm>
   )
 }

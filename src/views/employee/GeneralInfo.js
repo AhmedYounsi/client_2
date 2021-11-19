@@ -110,8 +110,7 @@ function GeneralInfo(props) {
         />
         <CFormFeedback invalid>Numéro non valide.</CFormFeedback>
       </CCol>
-
-      
+   
     </CForm>
   )
 }

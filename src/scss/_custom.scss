@@ -9,6 +9,8 @@
     justify-content: center;
     position: relative;
     flex-direction: column;
+    margin: 0;
+    padding-bottom: 100px;
 }
 .button-form{
     display: flex;
@@ -20,4 +22,14 @@
 
 .new_employer_form{
     min-height: 250px;
+}
+
+._link{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.icon-table{
+    border-radius: 50%;
+    width: 50px;
 }

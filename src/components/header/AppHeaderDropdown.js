@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import {
   CAvatar,
   CBadge,
@@ -8,7 +8,7 @@ import {
   CDropdownItem,
   CDropdownMenu,
   CDropdownToggle,
-} from '@coreui/react'
+} from "@coreui/react";
 import {
   cilBell,
   cilCreditCard,
@@ -19,22 +19,30 @@ import {
   cilSettings,
   cilTask,
   cilUser,
-} from '@coreui/icons'
-import CIcon from '@coreui/icons-react'
+} from "@coreui/icons";
+import CIcon from "@coreui/icons-react";
 
-import avatar8 from './../../assets/images/avatars/8.jpg'
-import { RemoveToken,removeUserData } from '../../actions/index'
-import { useDispatch } from 'react-redux'
+import avatar8 from "./../../assets/images/avatars/8.jpg";
+import { RemoveToken, removeUserData } from "../../actions/index";
+import { useDispatch, useSelector } from "react-redux";
+import { socket } from "../../utils/initSocket";
 
 const AppHeaderDropdown = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const TokenReducer = useSelector((state) => state.TokenReducer);
+
+  useEffect(() => {
+   
+  }, []);
+
   const Logout = (e) => {
- 
-    dispatch(RemoveToken())
-    dispatch(removeUserData())
-  }
+    // socket.emit("Deconnect_All", TokenReducer);
+    dispatch(RemoveToken());
+    dispatch(removeUserData());
+  };
   return (
     <CDropdown variant="nav-item">
+    
       <CDropdownToggle placement="bottom-end" className="py-0" caret={false}>
         <CAvatar src={avatar8} size="md" />
       </CDropdownToggle>
@@ -96,13 +104,13 @@ const AppHeaderDropdown = () => {
           </CBadge>
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem style={{cursor:'pointer'}} onClick={(e) => Logout(e)}>
+        <CDropdownItem style={{ cursor: "pointer" }} onClick={(e) => Logout(e)}>
           <CIcon icon={cilLockLocked} className="me-2" />
           Logout
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>
-  )
-}
+  );
+};
 
-export default AppHeaderDropdown
+export default AppHeaderDropdown;

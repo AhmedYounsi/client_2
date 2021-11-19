@@ -26,6 +26,7 @@ const App = () => {
   useEffect(() => {
     if (!TokenReducer) history.push('/login')
     else history.push('/dashboard')
+   
   }, [TokenReducer])
   
   return (

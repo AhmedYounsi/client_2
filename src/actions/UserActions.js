@@ -9,3 +9,16 @@ export const GetUsers = async () => {
     return error.response
   }
 }
+
+
+export const DelUser = async (TokenReducer,id) => {
+  try {
+    const res = await api.delete(`/users`, {
+      data: { id: id},
+      headers: { Authorization: TokenReducer },
+    })
+  return res
+  } catch (error) {
+    return error.response
+  } 
+}

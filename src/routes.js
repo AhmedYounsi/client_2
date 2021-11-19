@@ -1,7 +1,8 @@
 import React from 'react'
 import New_employee from './views/employee/New_employee'
 import Liste_employee from './views/employee/Liste_employee'
-import Events from './views/Events/Events'
+import AddEvent from './views/Events/AddEvent'
+import Calendar from './views/Events/Calendar'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -56,9 +57,14 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
+  
 
   { path: '/new_employee', name: 'Ajout empmlyee', component: New_employee },
   { path: '/liste_employee', name: 'Liste employee', component: Liste_employee },
+
+  { path: '/ajout_event', name: 'Ajout event', component: AddEvent },
+  { path: '/calendar', name: 'Calendar', component: Calendar },
+
 
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
